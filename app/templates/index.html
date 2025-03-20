@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Social Media Analytics</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+</head>
+<body>
+    <!-- Header Section -->
+    <div class="header">
+        <h1 class="header-title">📊 Social Media Analytics</h1>
+        <a href="/users" class="top-right">Users</a>
+    </div>
+
+    <div class="container">
+        <!-- Top Users Section -->
+        <div class="section">
+            <h2>🏆 Top Users with Most Posts</h2>
+            <button onclick="fetchTopUsers()">Get Top Users</button>
+            <ul id="top-users"></ul>
+        </div>
+
+        <!-- Popular Posts Section -->
+        <div class="section">
+            <h2>🔥 Popular Posts (by Comments)</h2>
+            <button onclick="fetchPopularPosts()">Get Popular Posts</button>
+            <ul id="popular-posts"></ul>
+        </div>
+    </div>
+
+    <script>
+        // Fetch Top Users with Most Posts
+        // Get Top Users
+        function fetchTopUsers() {
+            fetch('/users')
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data);
+                })
+                .catch(error => console.error("Failed to fetch top users", error));
+        }
+
+        // Get Popular Posts
+        function fetchPopularPosts() {
+            fetch('/posts/')
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data);
+                })
+                .catch(error => console.error("Failed to fetch popular posts", error));
+        }
+    </script>
+</body>
+</html>

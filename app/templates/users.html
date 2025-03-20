@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Users</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+</head>
+<body>
+    <div class="container">
+        <h1>👥 Registered Users</h1>
+        <div class="card-grid">
+            {% for user_id, user_name in users.items() %}
+                <div class="card">
+                    <h2>{{ user_name }}</h2>
+                    <p>User ID: <strong>{{ user_id }}</strong></p>
+                    <a href="/users/{{ user_id }}/posts" class="btn">View Posts</a>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>

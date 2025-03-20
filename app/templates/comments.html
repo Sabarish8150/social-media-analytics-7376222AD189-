@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Comments</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+</head>
+<body>
+    <div class="container">
+        <h1>💬 Comments</h1>
+        {% if comments %}
+            <ul class="comment-list">
+                {% for comment in comments %}
+                    <li class="comment">
+                        <p>{{ comment.content }}</p>
+                        <span class="comment-meta">- {{ comment.author }} at {{ comment.timestamp }}</span>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No comments available.</p>
+        {% endif %}
+    </div>
+</body>
+</html>
